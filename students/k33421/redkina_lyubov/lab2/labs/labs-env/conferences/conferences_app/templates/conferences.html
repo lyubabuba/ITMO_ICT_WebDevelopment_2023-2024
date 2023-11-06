@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список конференций</title>
+</head>
+<body>
+    <h1>Список конференций</h1>
+
+    <!-- Список конференций -->
+    <ul>
+        {% for conference in conferences %}
+            <li>
+                <a href="{% url 'all_conferences' %}">{{ conference.title }}</a>
+                ({{ conference.date_from|date:"d.m.Y" }} - {{ conference.date_to|date:"d.m.Y" }})
+            </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Кнопка для возврата на домашнюю страницу -->
+    <a href="{% url 'home' %}">Вернуться на домашнюю страницу</a>
+</body>
+</html>

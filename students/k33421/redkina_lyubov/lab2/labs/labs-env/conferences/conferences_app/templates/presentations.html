@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список выступлений</title>
+</head>
+<body>
+    <h1>Список выступлений</h1>
+
+    <!-- Список выступлений -->
+    <ul>
+        {% for presentation in presentations %}
+            <li>
+                <a href="{% url 'all_presentations' %}">{{ presentation.id }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Кнопка для возврата на домашнюю страницу -->
+    <a href="{% url 'home' %}">Вернуться на домашнюю страницу</a>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список регистраций</title>
+</head>
+<body>
+    <h1>Список регистраций</h1>
+
+    <!-- Список регистраций -->
+    <ul>
+        {% for registration in registrations %}
+            <li>
+                <a href="{% url 'all_registrations' %}">{{ registration.id }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Кнопка для возврата на домашнюю страницу -->
+    <a href="{% url 'home' %}">Вернуться на домашнюю страницу</a>
+</body>
+</html>
