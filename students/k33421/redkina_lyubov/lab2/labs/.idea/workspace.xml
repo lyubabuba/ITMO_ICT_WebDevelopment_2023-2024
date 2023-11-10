@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0222282a-0e84-4bb7-abe1-e641035b731d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/labs-env/conferences/conferences_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/labs-env/conferences/conferences_app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labs-env/conferences/conferences_app/templates/add_author.html" beforeDir="false" afterPath="$PROJECT_DIR$/labs-env/conferences/conferences_app/templates/add_author.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labs-env/conferences/conferences_app/templates/add_presentation.html" beforeDir="false" afterPath="$PROJECT_DIR$/labs-env/conferences/conferences_app/templates/add_presentation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labs-env/conferences/conferences_app/templates/add_registration.html" beforeDir="false" afterPath="$PROJECT_DIR$/labs-env/conferences/conferences_app/templates/add_registration.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labs-env/conferences/conferences_app/templates/authors.html" beforeDir="false" afterPath="$PROJECT_DIR$/labs-env/conferences/conferences_app/templates/authors.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labs-env/conferences/conferences_app/templates/conferences.html" beforeDir="false" afterPath="$PROJECT_DIR$/labs-env/conferences/conferences_app/templates/conferences.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labs-env/conferences/conferences_app/templates/edit_author.html" beforeDir="false" afterPath="$PROJECT_DIR$/labs-env/conferences/conferences_app/templates/edit_author.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labs-env/conferences/conferences_app/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/labs-env/conferences/conferences_app/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labs-env/conferences/conferences_app/templates/presentations.html" beforeDir="false" afterPath="$PROJECT_DIR$/labs-env/conferences/conferences_app/templates/presentations.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labs-env/conferences/conferences_app/templates/registrations.html" beforeDir="false" afterPath="$PROJECT_DIR$/labs-env/conferences/conferences_app/templates/registrations.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labs-env/conferences/conferences_app/templates/reviews.html" beforeDir="false" afterPath="$PROJECT_DIR$/labs-env/conferences/conferences_app/templates/reviews.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labs-env/conferences/conferences_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/labs-env/conferences/conferences_app/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labs-env/conferences/conferences_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/labs-env/conferences/conferences_app/views.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../.." />
+  </component>
+  <component name="ProjectId" id="2Xo7Rq5t6tzj4tUy7zGs0LlpPXg" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0222282a-0e84-4bb7-abe1-e641035b731d" name="Changes" comment="" />
+      <created>1699283572227</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1699283572227</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
+  </component>
+</project>
