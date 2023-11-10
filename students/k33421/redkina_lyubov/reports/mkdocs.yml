@@ -1,5 +1,5 @@
 site_name: My Docs
-remote_theme: dracula
+remote_theme: "dracula/gh-pages"
 theme:
     name: dracula
 markdown_extensions:
