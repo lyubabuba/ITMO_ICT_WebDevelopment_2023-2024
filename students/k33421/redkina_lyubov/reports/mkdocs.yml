@@ -1,4 +1,5 @@
 site_name: My Docs
+remote_theme: dracula
 theme:
     name: dracula
 markdown_extensions:
