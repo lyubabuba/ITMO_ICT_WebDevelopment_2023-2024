@@ -1,33 +1,44 @@
 from django.urls import path
 from . import views
-
+from .views import (
+    home,
+    AuthorCreateView,
+    AuthorUpdateView,
+    RegistrationCreateView,
+    RegistrationUpdateView,
+    RegistrationDeleteView,
+    PresentationCreateView,
+    PresentationUpdateView,
+    ReviewCreateView,
+    ReviewUpdateView,
+    conference_authors,
+    all_authors,
+)
 urlpatterns = [
-    path('', views.home, name='home'),
 
-    # Пути для конференций
-    path('conferences/', views.all_conferences, name='all_conferences'),
-    path('conference/<int:conference_id>/', views.conference_authors, name='conference_authors'),
+    path('', home, name='home'),
+    path('authors/', all_authors, name='all_authors'),
+    path('authors/add/', AuthorCreateView.as_view(), name='add_author'),
+    path('author/<int:pk>/edit', AuthorUpdateView.as_view(), name='edit_author'),
+    path('author/<int:author_id>/', views.author_detail, name='author_detail'),
 
-    # Пути для авторов
-    path('authors/', views.all_authors, name='all_authors'),
-    path('authors/add/', views.AuthorCreateView.as_view(), name='add_author'),
-    path('authors/edit/<int:pk>/', views.AuthorUpdateView.as_view(), name='edit_author'),
-
-    # Пути для презентаций
-    path('presentations/', views.all_presentations, name='all_presentations'),
-    path('presentations/add/', views.PresentationCreateView.as_view(), name='add_presentation'),
-    path('presentations/edit/<int:pk>/', views.PresentationUpdateView.as_view(), name='edit_presentation'),
-    path('presentations/delete/<int:pk>/', views.PresentationDeleteView.as_view(), name='delete_presentation'),
-
-    # Пути для регистраций
     path('registrations/', views.all_registrations, name='all_registrations'),
-    path('registrations/add/', views.RegistrationCreateView.as_view(), name='add_registration'),
-    path('registrations/edit/<int:pk>/', views.RegistrationUpdateView.as_view(), name='edit_registration'),
-    path('registrations/delete/<int:pk>/', views.RegistrationDeleteView.as_view(), name='delete_registration'),
+    path('registrations/add/', RegistrationCreateView.as_view(), name='add_registration'),
+    path('registration/<int:pk>/edit', RegistrationUpdateView.as_view(), name='edit_registration'),
+    path('registration/<int:registration_id>/', views.registration_detail, name='registration_detail'),
+    path('registration/<int:pk>/delete', RegistrationDeleteView.as_view(), name='delete_registration'),
 
-    # Пути для отзывов
     path('reviews/', views.all_reviews, name='all_reviews'),
-    path('reviews/add/', views.ReviewCreateView.as_view(), name='add_review'),
-    path('reviews/edit/<int:pk>/', views.ReviewUpdateView.as_view(), name='edit_review'),
-    path('reviews/delete/<int:pk>/', views.ReviewDeleteView.as_view(), name='delete_review'),
+    path('reviews/add/', ReviewCreateView.as_view(), name='add_review'),
+    path('review/<int:pk>/edit', ReviewUpdateView.as_view(), name='edit_review'),
+    path('review/<int:review_id>/', views.review_detail, name='review_detail'),
+
+    path('presentations/', views.all_presentations, name='all_presentations'),
+    path('presentations/add/', PresentationCreateView.as_view(), name='add_presentation'),
+    path('presentation/<int:pk>/edit', PresentationUpdateView.as_view(), name='edit_presentation'),
+    path('presentation/<int:presentation_id>/', views.presentation_detail, name='presentation_detail'),
+
+    path('conferences/', views.all_conferences, name='all_conferences'),
+    path('conference/<int:conference_id>/', views.conference_detail, name='conference_detail'),
+    path('conference/<int:conference_id>/authors/', conference_authors, name='conference_authors'),
 ]
