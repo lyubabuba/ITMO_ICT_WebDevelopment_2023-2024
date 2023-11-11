@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Создание регистрации</title>
+    <title>add new registration</title>
 </head>
 <body>
-    <h1>Создание новой регистрации</h1>
-
-    <form method="post">
+    <h1>add new registration</h1>
+    <form method="post" action="{% url 'add_registration' %}">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Создать регистрацию</button>
+        <button type="submit">submit</button>
     </form>
-
-    <!-- Кнопка для возврата на домашнюю страницу -->
-    <a href="{% url 'home' %}">Вернуться на домашнюю страницу</a>
+    <a href="{% url 'home' %}">back to home</a>
 </body>
 </html>
