@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Создание автора</title>
+    <title>add new author</title>
 </head>
 <body>
-    <h1>Создание нового автора</h1>
-
-    <form method="post">
+    <h1>add new authorr</h1>
+    <form method="post" action="{% url 'add_author' %}">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Создать автора</button>
+        <button type="submit">submit</button>
     </form>
-
-    <!-- Кнопка для возврата на домашнюю страницу -->
-    <a href="{% url 'home' %}">Вернуться на домашнюю страницу</a>
+    <a href="{% url 'home' %}">back to home</a>
 </body>
 </html>
