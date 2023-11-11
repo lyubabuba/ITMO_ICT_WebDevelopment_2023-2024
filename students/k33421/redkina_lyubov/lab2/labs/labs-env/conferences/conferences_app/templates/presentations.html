@@ -1,21 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Список выступлений</title>
+    <title>all presentations</title>
 </head>
 <body>
-    <h1>Список выступлений</h1>
-
-    <!-- Список выступлений -->
+    <h1>all presentations</h1>
     <ul>
         {% for presentation in presentations %}
-            <li>
-                <a href="{% url 'all_presentations' %}">{{ presentation.id }}</a>
-            </li>
+            <li><a href="{% url 'presentation_detail' presentation.id %}">{{ presentation.title }}</a></li>
         {% endfor %}
     </ul>
-
-    <!-- Кнопка для возврата на домашнюю страницу -->
-    <a href="{% url 'home' %}">Вернуться на домашнюю страницу</a>
+    <a href="{% url 'home' %}">back to home</a>
 </body>
 </html>
