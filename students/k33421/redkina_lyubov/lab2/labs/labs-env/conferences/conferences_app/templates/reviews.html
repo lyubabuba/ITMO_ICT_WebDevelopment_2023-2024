@@ -1,21 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Список отзывов</title>
+    <title>all reviews</title>
 </head>
 <body>
-    <h1>Список отзывов</h1>
-
-    <!-- Список отзывов -->
+    <h1>all reviews</h1>
     <ul>
         {% for review in reviews %}
-            <li>
-                <a href="{% url 'all_reviews' %}">{{ review.id }}</a>
-            </li>
+            <li><a href="{% url 'review_detail' review.id %}">{{ review.id }} {{ review.rating }}Rating</a></li>
         {% endfor %}
     </ul>
-
-    <!-- Кнопка для возврата на домашнюю страницу -->
-    <a href="{% url 'home' %}">Вернуться на домашнюю страницу</a>
+    <a href="{% url 'home' %}">back to home</a>
 </body>
 </html>
