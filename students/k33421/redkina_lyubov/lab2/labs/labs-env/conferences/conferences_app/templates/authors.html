@@ -1,21 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Список авторов</title>
+    <title>all authors</title>
 </head>
 <body>
-    <h1>Список авторов</h1>
-
-    <!-- Список авторов -->
+    <h1>all authors</h1>
     <ul>
         {% for author in authors %}
-            <li>
-                <a href="{% url 'all_authors' %}">{{ author.first_name }}</a>
-            </li>
+            <li><a href="{% url 'author_detail' author.id %}">{{ author.first_name }} {{ author.last_name }}</a></li>
         {% endfor %}
     </ul>
-
-    <!-- Кнопка для возврата на домашнюю страницу -->
-    <a href="{% url 'home' %}">Вернуться на домашнюю страницу</a>
+    <a href="{% url 'home' %}">back to Home</a>
 </body>
 </html>
