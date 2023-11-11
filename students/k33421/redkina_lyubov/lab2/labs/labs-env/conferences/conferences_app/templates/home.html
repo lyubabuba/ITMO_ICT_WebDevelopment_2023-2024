@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Домашняя страница</title>
+    <title>home</title>
 </head>
 <body>
-    <h1>Добро пожаловать на домашнюю страницу блога!</h1>
-
-    <p>На этой странице вы можете найти информацию о конференциях, авторах, презентациях, регистрациях и отзывах.</p>
-
-    <!-- Ссылки на разделы блога -->
+    <h1>public conferences managing page</h1>
     <ul>
-        <li><a href="{% url 'all_conferences' %}">Список конференций</a></li>
-        <li><a href="{% url 'all_authors' %}">Список авторов</a></li>
-        <li><a href="{% url 'all_registrations' %}">Список регистраций</a></li>
-        <li><a href="{% url 'all_presentations' %}">Список выступлений</a></li>
-        <li><a href="{% url 'all_reviews' %}">Список отзывов</a></li>
-        <li><a href="{% url 'add_author' %}">Создать нового автора</a></li>
-        <li><a href="{% url 'add_presentation' %}">Создать новое выступление</a></li>
-        <li><a href="{% url 'add_registration' %}">Создать новую регистрацию</a></li>
+        <li><a href="{% url 'all_authors' %}">all authors</a></li>
+        <li><a href="{% url 'add_author' %}">add new author</a></li>
+        <li><a href="{% url 'all_registrations' %}">all registrations</a></li>
+        <li><a href="{% url 'add_registration' %}">add new registration</a></li>
+        <li><a href="{% url 'all_reviews' %}">all reviews</a></li>
+        <li><a href="{% url 'add_review' %}">add new review</a></li>
+        <li><a href="{% url 'all_presentations' %}">all presentations</a></li>
+        <li><a href="{% url 'add_presentation' %}">add new presentation</a></li>
+        <li><a href="{% url 'all_conferences' %}">all conferences</a></li>
     </ul>
 </body>
 </html>
