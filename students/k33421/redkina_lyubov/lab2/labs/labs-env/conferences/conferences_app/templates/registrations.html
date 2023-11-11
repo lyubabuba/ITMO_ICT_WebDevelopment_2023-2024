@@ -1,21 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Список регистраций</title>
+    <title>all registrations</title>
 </head>
 <body>
-    <h1>Список регистраций</h1>
-
-    <!-- Список регистраций -->
+    <h1>all registrations</h1>
     <ul>
         {% for registration in registrations %}
-            <li>
-                <a href="{% url 'all_registrations' %}">{{ registration.id }}</a>
-            </li>
+            <li><a href="{% url 'registration_detail' registration.id %}">{{ registration.title }}</a></li>
         {% endfor %}
     </ul>
-
-    <!-- Кнопка для возврата на домашнюю страницу -->
-    <a href="{% url 'home' %}">Вернуться на домашнюю страницу</a>
+    <a href="{% url 'home' %}">back to home</a>
 </body>
 </html>
