@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>task 4 - My Docs</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">My Docs</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">home</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">lab 1 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../task1/" class="dropdown-item">task 1</a>
+</li>
+                                    
+<li>
+    <a href="../task2/" class="dropdown-item">task 2</a>
+</li>
+                                    
+<li>
+    <a href="../task3/" class="dropdown-item">task 3</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">task 4</a>
+</li>
+                                    
+<li>
+    <a href="../task5/" class="dropdown-item">task 5</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">lab 2 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../lab2/admin/" class="dropdown-item">admin</a>
+</li>
+                                    
+<li>
+    <a href="../../lab2/forms/" class="dropdown-item">forms</a>
+</li>
+                                    
+<li>
+    <a href="../../lab2/model/" class="dropdown-item">models</a>
+</li>
+                                    
+<li>
+    <a href="../../lab2/settings/" class="dropdown-item">settings</a>
+</li>
+                                    
+<li>
+    <a href="../../lab2/templates/" class="dropdown-item">templates</a>
+</li>
+                                    
+<li>
+    <a href="../../lab2/urls/" class="dropdown-item">urls</a>
+</li>
+                                    
+<li>
+    <a href="../../lab2/views/" class="dropdown-item">views</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../task3/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../task5/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#task-4" class="nav-link">task 4</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="task-4">task 4</h1>
+<h3 id="serverpy">server.py</h3>
+<pre><code># Импорт всяких библиотек
+import socket
+import threading
+
+# Создаём сокет для сервера
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+# Привязываем сервер к локальному хосту и порту 9090
+server.bind(('localhost', 9090))
+
+# Начало прослушивания сокета
+server.listen()
+
+# Создаём список клиентов
+clients = []
+
+# Функция для отправки сообщения всем клиентам
+def broadcast(message):
+    for client in clients:
+        client.send(message)
+
+# Обработчик клиента
+def handle(client):
+    while True:
+        try:
+            # Прием сообщения от клиента
+            message = client.recv(1024)
+            if message:
+                # Отправка сообщения всем клиентам
+                broadcast(message)
+                print(message.decode('utf-8'))
+        except:
+            continue
+
+# Функция для приема новых клиентов
+def receive():
+    while True:
+        client, address = server.accept()
+        print("Подключение с {}".format(str(address)))
+
+        # Отправка клиенту запроса на выбор никнейма
+        client.send('nickname'.encode('utf-8'))
+        nickname = client.recv(1024).decode('utf-8')
+        clients.append(client)
+        print("Никнейм: {}".format(nickname))
+
+        # Отправка сообщения о подключении нового клиента всем клиентам
+        broadcast("{} присоединился!".format(nickname).encode('utf-8'))
+        client.send('Подключено к серверу!'.encode('utf-8'))
+
+        # Запуск потока для обработки сообщений клиента
+        thread = threading.Thread(target=handle, args=(client,))
+        thread.start()
+
+print("Сервер слушает")
+receive()
+</code></pre>
+<h3 id="clientpy">client.py</h3>
+<pre><code>import socket
+import threading
+
+# Ввод никнейма
+nickname = input("Выберите никнейм: ")
+
+# Создание клиентского сокета и подключение к серверу
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+client.connect(('localhost', 9090))
+
+# Функция для приема сообщений
+def receive():
+    while True:
+        try:
+            # Прием сообщения от сервера
+            message = client.recv(1024).decode('utf-8')
+            if message == 'nickname':
+                # Отправка никнейма серверу
+                client.send(nickname.encode('utf-8'))
+            else:
+                print(message)
+        except:
+            break
+
+# Функция для отправки сообщений
+def write():
+    while True:
+        message = '{}: {}'.format(nickname, input(''))
+        client.send(message.encode('utf-8'))
+
+# Запуск потока для приема сообщений
+receive_thread = threading.Thread(target=receive)
+receive_thread.start()
+
+# Запуск потока для отправки сообщений
+write_thread = threading.Thread(target=write)
+write_thread.start()
+</code></pre>
+<p><img alt="" src="../task4.png" /></p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/jquery-3.6.0.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
