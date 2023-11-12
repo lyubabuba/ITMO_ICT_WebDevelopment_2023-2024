@@ -1,168 +1,282 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
+
+<head>
+        <title>templates - My Docs</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         
         
         
-        <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>templates - My Docs</title>
-        <link href="../../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../../css/font-awesome.min.css" rel="stylesheet">
-        <link href="../../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-        <script>hljs.highlightAll();</script> 
-    </head>
 
-    <body>
-        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
-            <div class="container">
-                <a class="navbar-brand" href="../..">My Docs</a>
-                <!-- Expander button -->
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../assets/css/dracula-ui.css">
+        <link rel="stylesheet" href="../../assets/css/mkdocs.css">
 
-                <!-- Expanded navigation -->
-                <div id="navbar-collapse" class="navbar-collapse collapse">
-                        <!-- Main navigation -->
-                        <ul class="nav navbar-nav">
-                            <li class="navitem">
-                                <a href="../.." class="nav-link">home</a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">lab 1 <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li>
-    <a href="../../lab1/task1/" class="dropdown-item">task 1</a>
-</li>
-                                    
-<li>
-    <a href="../../lab1/task2/" class="dropdown-item">task 2</a>
-</li>
-                                    
-<li>
-    <a href="../../lab1/task3/" class="dropdown-item">task 3</a>
-</li>
-                                    
-<li>
-    <a href="../../lab1/task4/" class="dropdown-item">task 4</a>
-</li>
-                                    
-<li>
-    <a href="../../lab1/task5/" class="dropdown-item">task 5</a>
-</li>
-                                </ul>
-                            </li>
-                            <li class="dropdown active">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">lab 2 <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li>
-    <a href="../admin/" class="dropdown-item">admin</a>
-</li>
-                                    
-<li>
-    <a href="../forms/" class="dropdown-item">forms</a>
-</li>
-                                    
-<li>
-    <a href="../model/" class="dropdown-item">models</a>
-</li>
-                                    
-<li>
-    <a href="../settings/" class="dropdown-item">settings</a>
-</li>
-                                    
-<li>
-    <a href="./" class="dropdown-item active">templates</a>
-</li>
-                                    
-<li>
-    <a href="../urls/" class="dropdown-item">urls</a>
-</li>
-                                    
-<li>
-    <a href="../views/" class="dropdown-item">views</a>
-</li>
-                                </ul>
-                            </li>
-                        </ul>
+        
+            <link  rel="icon" type="image/x-icon" href="../../assets/img/favicon.ico">
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+                <script>hljs.initHighlightingOnLoad();</script>
 
-                    <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
-                                <i class="fa fa-search"></i> Search
-                            </a>
-                        </li>
-                            <li class="nav-item">
-                                <a rel="prev" href="../settings/" class="nav-link">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a rel="next" href="../urls/" class="nav-link">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+</head>
 
-        <div class="container">
-            <div class="row">
-                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
-            <span class="fa fa-angle-down"></span>
+<body class="drac-bg-black-secondary drac-text-grey-ternary drac-text drac-scrollbar-purple">
+
+    <main class="d-flex">
+
+        <!-- block sidebar -->
+            <nav id="sidebar" class="sidebar drac-bg-black">
+    <div class="custom-menu">
+        <button type="button" id="sidebarCollapse" class="btn btn-primary">
+            <i class="fa fa-bars"></i>
+            <span class="sr-only">Menu</span>
         </button>
     </div>
 
-    
-    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
-        <ul class="nav flex-column">
-        </ul>
-    </div>
-</div></div>
-                    <div class="col-md-9" role="main">
+    <div class="p-4">
+        
 
-<p>В проекте я использую множество html-страниц для представления информации о приложении на строне клиента.
+        <div class="drac-text-center">
+            
+                <span class="drac-text drac-line-height drac-text-white">My Docs</span>
+            
+        </div>
+
+        <div class="drac-box flex-column">
+            <ul class="dot-ul">
+                <li><div class="dot-li drac-bg-cyan"></div></li>
+                <li><div class="dot-li drac-bg-green"></div></li>
+                <li><div class="dot-li drac-bg-orange"></div></li>
+                <li><div class="dot-li drac-bg-pink"></div></li>
+                <li><div class="dot-li drac-bg-purple"></div></li>
+                <li><div class="dot-li drac-bg-red"></div></li>
+                <li><div class="dot-li drac-bg-yellow"></div></li>
+            </ul>
+        </div>
+
+        <hr class="drac-divider" />
+
+        <!-- block menu -->
+        <ul class="mb-5 drac-list drac-list-none">
+            
+            <li class="drac-box">
+                <a href="../.."
+                    class="
+                    drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+                    home
+                </a>
+            </li>
+            <li class="drac-box">
+                <a href="../.."
+                    class="
+                    drac-anchor btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
+                    data-bs-toggle="collapse" data-bs-target="#lab-1-collapse" aria-expanded="false">
+                    lab 1
+                </a>
+                <div class="collapse" id="lab-1-collapse">
+                    <ul class="mb-5 drac-list drac-list-none">
+                            
+    <li class="drac-box-ternary">
+        <a href="../../lab1/task1/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            task 1
+        </a>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="../../lab1/task2/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            task 2
+        </a>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="../../lab1/task3/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            task 3
+        </a>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="../../lab1/task4/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            task 4
+        </a>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="../../lab1/task5/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            task 5
+        </a>
+    </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="drac-box">
+                <a href="../.."
+                    class=" active 
+                    drac-anchor btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
+                    data-bs-toggle="collapse" data-bs-target="#lab-2-collapse" aria-expanded="false">
+                    lab 2
+                </a>
+                <div class="collapse" id="lab-2-collapse">
+                    <ul class="mb-5 drac-list drac-list-none">
+                            
+    <li class="drac-box-ternary">
+        <a href="../admin/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            admin
+        </a>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="../forms/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            forms
+        </a>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="../model/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            models
+        </a>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="../settings/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            settings
+        </a>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="./"
+            class=" active 
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            templates
+        </a>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="../urls/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            urls
+        </a>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="../views/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            views
+        </a>
+    </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+        <!-- endblock -->
+    </div>
+</nav>
+        <!-- endblock -->
+
+        <nav class="divider drac-bg-purple-cyan"></nav>
+
+        <div class="content">
+            <!-- block header -->
+                <header>
+    <nav class="navbar navbar-expand-xl drac-bg-purple"">
+        <div class="container-fluid">
+
+            <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsMenu"
+                aria-controls="navbarsMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button> -->
+
+            <div class="collapse navbar-collapse flex-column ml-auto" id="navbarsMenu">
+                <ul class="navbar-nav">
+
+                    <!-- block preview -->
+                    <li class="nav-item">
+                            
+        <div class="container">
+            <div class="row row-preview">
+                <div class="col">
+                    <a href="../settings/"
+                        class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="../urls/"
+                        class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover" style="padding-left: 3%;">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+                    </li>
+                    <!--  endblock -->
+
+                    <!-- block search -->
+                    <li class="nav-item"><div role="search" class="search-box">
+	<form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+		<input type="text" name="q" class="drac-input drac-input-search drac-input-white drac-text-white drac-bg-black-secondary"
+		placeholder="Search docs" title="Type search term here" />
+	</form>
+</div>
+                    </li>
+                    <!--  endblock -->
+
+                    <!-- block source -->
+                    <li class="nav-item">
+                        
+                    </li>
+                    <!--  endblock -->
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+</header>
+            <!-- endblock -->
+
+            <!-- block content -->
+                <section class="p-md-5 section-content">
+    <article>
+        <p><p>В проекте я использую множество html-страниц для представления информации о приложении на строне клиента.
 Для удобства я создала папку templates, где и храню все шаблоны.</p>
 <p>В целом можно сказать, что все шаблоны делятся на:</p>
 <ol>
-<li>
-<p>шаблоны для добавления объекта</p>
-</li>
-<li>
-<p>шаблоны для просмотра всех объектов в списке</p>
-</li>
-<li>
-<p>шаблоны для просмотра объекта</p>
-</li>
-<li>
-<p>шаблоны для редактирования объекта</p>
-</li>
+<li>шаблоны для добавления объекта</li>
+<li>шаблоны для просмотра всех объектов в списке</li>
+<li>шаблоны для просмотра объекта</li>
+<li>шаблоны для редактирования объекта</li>
 </ol>
-<p>Страницы для добавления объектов выглядят одинаково вне зависимости от того, какие модели я использую.
+<p>Страницы для добавления объектов выглядят почти одинаково, вне зависимости от того, какие модели я использую.
 Все странцы этого типа:</p>
 <ol>
-<li>
-<p>содержат форму для отправки данных методом POST на URL 'add_object'.</p>
-</li>
-<li>
-<p>имеют поля формы в виде параграфов (обычно это инпуты и лейблы для полей модели).</p>
-</li>
-<li>
-<p>кнопка для отправки формы <code>&lt;button type="submit"&gt;submit&lt;/button&gt;</code>.</p>
-</li>
-<li>
-<p>предоставляют ссылку для возврата на главную страницу, используя URL <code>home</code>.</p>
-</li>
+<li>содержат форму для отправки данных методом POST на URL 'add_object'.</li>
+<li>имеют поля формы в виде параграфов (инпуты и лейблы для полей модели).</li>
+<li>имеют кнопку для отправки формы <code>&lt;button type="submit"&gt;submit&lt;/button&gt;</code>.</li>
+<li>предоставляют ссылку для возврата на главную страницу, используя URL <code>home</code>.</li>
 </ol>
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -185,18 +299,12 @@
 &lt;/html&gt;
 </code></pre>
 <p><img alt="" src="../11add-author.png" /></p>
-<p>Страницы группы <code>all_objects</code> отображают всех авторов в веб-приложении Django. 
+<p>Страницы группы <code>all_objects</code> отображают все объекты одного класса в веб-приложении Django. 
 Они похожи тем, что:</p>
 <ol>
-<li>
-<p>содержат цикл типа <code>{% for object in objects %}</code> для перебора всех объектов в списке.</p>
-</li>
-<li>
-<p>каждый объект представлен в виде элемента списка, где его аттрибут(-ы) являются гиперссылкой (<code>&lt;a&gt;</code>), ведущей на страницу деталей об объекте ('object_detail'), используя идентификатор объекта (object.id).</p>
-</li>
-<li>
-<p>предоставляют ссылку <code>&lt;a href="{% url 'home' %}"&gt;back to Home&lt;/a&gt;</code> для возврата на домашнюю страницу.</p>
-</li>
+<li>содержат цикл типа <code>{% for object in objects %}</code> для перебора всех объектов в списке.</li>
+<li>каждый объект представлен в виде элемента списка, где его аттрибут(-ы) являются гиперссылкой (<code>&lt;a&gt;</code>), ведущей на страницу деталей об объекте ('object_detail'), используя идентификатор объекта (object.id).</li>
+<li>предоставляют ссылку <code>&lt;a href="{% url 'home' %}"&gt;back to Home&lt;/a&gt;</code> для возврата на домашнюю страницу.</li>
 </ol>
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -222,15 +330,9 @@
 <p>Страницы типа object_details отображают подробности об определенном объекте веб-приложения Django.
 Их объединяет то, что:</p>
 <ol>
-<li>
-<p>их заголовок, который отображается во вкладке браузера, использует аттрибуты объекта <code>&lt;title&gt;{{ author.first_name }} {{ author.last_name }} details&lt;/title&gt;</code>.</p>
-</li>
-<li>
-<p>они содержат параграфы (<code>&lt;p&gt;</code>), отображающие различные атрибуты объекта.</p>
-</li>
-<li>
-<p>предоставляют ссылку <code>&lt;a href="{% url 'home' %}"&gt;back to Home&lt;/a&gt;</code> для возврата на домашнюю страницу.</p>
-</li>
+<li>их заголовок, который отображается во вкладке браузера, использует аттрибуты объекта <code>&lt;title&gt;{{ author.first_name }} {{ author.last_name }} details&lt;/title&gt;</code>.</li>
+<li>они содержат параграфы (<code>&lt;p&gt;</code>), отображающие различные атрибуты объекта.</li>
+<li>предоставляют ссылку <code>&lt;a href="{% url 'home' %}"&gt;back to Home&lt;/a&gt;</code> для возврата на домашнюю страницу.</li>
 </ol>
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -250,18 +352,12 @@
 &lt;/html&gt;
 </code></pre>
 <p><img alt="" src="../9author-details.png" /></p>
-<p>Страницы типа <code>edit_object</code> нужны для редатктирования информации об объекте.
+<p>Страницы типа <code>edit_object</code> нужны для редактирования информации об объекте.
 Все страницы этого типа:</p>
 <ol>
-<li>
-<p>содержат форму для отправки данных методом POST на URL <code>edit_object</code>.</p>
-</li>
-<li>
-<p>содержат кнопку <code>&lt;button type="submit"&gt;submit&lt;/button&gt;</code> для отправки данных формы.</p>
-</li>
-<li>
-<p>предоставляют ссылку <code>&lt;a href="{% url 'home' %}"&gt;back to Home&lt;/a&gt;</code> для возврата на домашнюю страницу.</p>
-</li>
+<li>содержат форму для отправки данных методом POST на URL <code>edit_object</code>.</li>
+<li>содержат кнопку <code>&lt;button type="submit"&gt;submit&lt;/button&gt;</code> для отправки данных формы.</li>
+<li>предоставляют ссылку <code>&lt;a href="{% url 'home' %}"&gt;back to Home&lt;/a&gt;</code> для возврата на домашнюю страницу.</li>
 </ol>
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -319,83 +415,31 @@
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<p><img alt="" src="../12conference-authors.png" /></p></div>
-            </div>
-        </div>
+<p><img alt="" src="../12conference-authors.png" /></p></p>
+    </article>
+</section>
+            <!-- endblock -->
 
-        <footer class="col-md-12">
-            <hr>
-            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
-        </footer>
-        <script src="../../js/jquery-3.6.0.min.js"></script>
-        <script src="../../js/bootstrap.min.js"></script>
-        <script>
-            var base_url = "../..",
-                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
-        </script>
-        <script src="../../js/base.js"></script>
-        <script src="../../search/main.js"></script>
-
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="searchModalLabel">Search</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            </div>
-            <div class="modal-body">
-                <p>From here you can search these documents. Enter your search terms below.</p>
-                <form>
-                    <div class="form-group">
-                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
-                    </div>
-                </form>
-                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
+            <!-- block footer -->
+                <footer>
+    <div class="d-flex flex-sm-row justify-content-between py-2 border-top drac-text-black drac-bg-cyan-green">
+        <a href="https://github.com/dracula/mkdocs" target="_blank" style="padding-left: 1%;"
+            class="footer-text drac-anchor drac-text-black drac-text-purple--hover">
+            Made with Dracula Theme for MkDocs
+        </a>
     </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            </div>
-            <div class="modal-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th style="width: 20%;">Keys</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="help shortcut"><kbd>?</kbd></td>
-                    <td>Open this help</td>
-                  </tr>
-                  <tr>
-                    <td class="next shortcut"><kbd>n</kbd></td>
-                    <td>Next page</td>
-                  </tr>
-                  <tr>
-                    <td class="prev shortcut"><kbd>p</kbd></td>
-                    <td>Previous page</td>
-                  </tr>
-                  <tr>
-                    <td class="search shortcut"><kbd>s</kbd></td>
-                    <td>Search</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="modal-footer">
-            </div>
+</footer>
+            <!-- endblock -->
         </div>
-    </div>
-</div>
 
-    </body>
+    </main>
+
+        <script>var base_url = '../..';</script>
+        <script src="../../assets/js/jquery-3.3.1.slim.min.js""></script>
+        <script src="../../assets/js/bootstrap.bundle.min.js""></script>
+        <script src="../../assets/js/mkdocs.js""></script>
+			<script src="../../search/main.js" defer></script>
+
+</body>
+
 </html>
