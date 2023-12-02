@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-        <title>models - My Docs</title>
+        <title>Task3 - My Docs</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -124,7 +124,7 @@
             </li>
             <li class="drac-box">
                 <a href="../.."
-                    class=" active 
+                    class="
                     drac-anchor btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
                     data-bs-toggle="collapse" data-bs-target="#lab-2-collapse" aria-expanded="false">
                     lab 2
@@ -133,7 +133,7 @@
                     <ul class="mb-5 drac-list drac-list-none">
                             
     <li class="drac-box-ternary">
-        <a href="../admin/"
+        <a href="../../lab2/admin/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             admin
@@ -141,7 +141,7 @@
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="../forms/"
+        <a href="../../lab2/forms/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             forms
@@ -149,15 +149,15 @@
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="./"
-            class=" active 
+        <a href="../../lab2/model/"
+            class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             models
         </a>
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="../settings/"
+        <a href="../../lab2/settings/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             settings
@@ -165,7 +165,7 @@
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="../templates/"
+        <a href="../../lab2/templates/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             templates
@@ -173,7 +173,7 @@
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="../urls/"
+        <a href="../../lab2/urls/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             urls
@@ -181,7 +181,7 @@
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="../views/"
+        <a href="../../lab2/views/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             views
@@ -215,22 +215,6 @@
                     <!-- block preview -->
                     <li class="nav-item">
                             
-        <div class="container">
-            <div class="row row-preview">
-                <div class="col">
-                    <a href="../forms/"
-                        class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover">
-                        <i class="fa fa-arrow-left"></i> Previous
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="../settings/"
-                        class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover" style="padding-left: 3%;">
-                        Next <i class="fa fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
                     </li>
                     <!--  endblock -->
 
@@ -261,55 +245,103 @@
             <!-- block content -->
                 <section class="p-md-5 section-content">
     <article>
-        <p><h3 id="modelspy">models.py</h3>
-<p>Модель в Django является способом описания структуры данных созданного приложения. 
-Она определяет, какие данные будут сохраняться в базе данных и как они будут организованы.</p>
-<p>В этой части кода я импортирую необходимые модули для определения моделей в Django. <code>models</code> предоставляет базовые классы для создания моделей базы данных, а <code>AbstractUser</code> - базовую модель пользователя Django, которую можно расширить для создания своей модели пользователя.</p>
-<pre><code>from django.db import models
-from django.contrib.auth.models import AbstractUser
-from django.core.validators import MinValueValidator, MaxValueValidator
+        <p><h2 id="33">Практика 3.3</h2>
+<h3 id="331">Задание 3.3.1</h3>
+<p>В первом задании третьей практической работы нужно вывести информацию по документам для водителя с самой ранней датой владения машиной.
+Вот код запроса:</p>
+<pre><code>from project_first_app.models import Driver, Ownership, DriverDocs
+
+# Получение информации о самых старых документах
+oldest_ownership = Ownership.objects.earliest('date_from')
+# Водитель соответсвующий наистарейшей дате
+oldest_driver = Driver.objects.get(id=oldest_ownership.driver_id_id)
+
+# Назначаем дату
+oldest_date_from = oldest_ownership.date_from
+# Используя назначенную дату находим соответствующие водительские права
+oldest_driver_docs = DriverDocs.objects.filter(driver_id=oldest_ownership.driver_id_id).earliest('date_from')
+
+# Вывод информации с новыми строками
+print(f&quot;Oldest Driver: {oldest_driver.first_name} {oldest_driver.last_name}\n&quot;
+      f&quot;Oldest Ownership Date From: {oldest_date_from}\n&quot;
+      f&quot;Oldest Driver Docs Info: {oldest_driver_docs.docs_number}, {oldest_driver_docs.type}&quot;)
 </code></pre>
-<p>Здесь создается модель <code>Author</code>, которая расширяет <code>AbstractUser</code>. Я добавляю несколько дополнительных полей: <code>first_name</code>, <code>last_name</code>, <code>occupation</code> (занятие), <code>is_admin</code> (статус администратора), а также поля для связи с группами и разрешениями Django.</p>
-<pre><code>class Author(AbstractUser):
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    occupation = models.CharField(max_length=200)
-    is_admin = models.BooleanField(default=False)
-    groups = models.ManyToManyField('auth.Group', related_name='author_groups')
-    user_permissions = models.ManyToManyField('auth.Permission', related_name='author_user_permissions')
+<p>Здесь можно увидеть выполнение запроса в консоли.
+<img alt="" src="../3.3.1.png" /></p>
+<h3 id="332">Задание 3.3.2</h3>
+<p>Во втором задании третьей практической работы нужно вывести информацию о водителе и его машине, для которых владение заканчивается позже всего.
+Вот код запроса:</p>
+<pre><code>from project_first_app.models import Driver, Ownership, Car
+
+# Получение ID владельца с наибольшей датой окончания владения
+latest_ownership_id = Ownership.objects.latest('date_to').driver_id_id
+
+# Получение информации о водителе с наибольшей датой окончания владения
+latest_driver = Driver.objects.get(id=latest_ownership_id)
+
+# Получение объекта владения с наибольшей датой окончания владения
+latest_ownership = Ownership.objects.latest('date_to')
+
+# Получение информации о машине, для которой владение заканчивается позже всего
+latest_car = Car.objects.get(id=latest_ownership.car_id_id)
+
+# Вывод информации
+print(f&quot;Latest Driver: {latest_driver.first_name} {latest_driver.last_name}\n&quot;
+      f&quot;Latest Car: {latest_car.brand} {latest_car.model}\n&quot;
+      f&quot;Latest Ownership Date To: {latest_ownership.date_to}&quot;)
 </code></pre>
-<p>Эта часть кода определяет модель <code>Conference</code> с несколькими полями, такими как <code>title</code> (заголовок), <code>topics</code> (темы), <code>venue</code> (место проведения), <code>date_from</code> и <code>date_to</code> (даты начала и окончания).</p>
-<pre><code>class Conference(models.Model):
-    title = models.CharField(max_length=200)
-    topics = models.TextField()
-    venue = models.CharField(max_length=200)
-    date_from = models.DateField()
-    date_to = models.DateField()
+<p>Здесь можно увидеть выполнение запроса в консоли.
+<img alt="" src="../3.3.2.png" /></p>
+<h3 id="333">Задание 3.3.3</h3>
+<p>В третьем задании третьей практической работы нужно подсчитать количество машин для каждого водителя.
+Вот код запроса:</p>
+<pre><code>from project_first_app.models import Driver, Ownership
+from django.db.models import Count
+
+# Получение информации о количестве машин для каждого водителя
+drivers_with_car_count = Driver.objects.annotate(car_count=Count('ownership'))
+
+# Вывод информации
+for driver in drivers_with_car_count:
+    print(f&quot;Driver: {driver.first_name} {driver.last_name}, Car Count: {driver.car_count}&quot;)
 </code></pre>
-<p>Здесь определена модель <code>Registration</code> с внешними ключами на модели <code>Author</code> и <code>Conference</code>. Есть также поля <code>title</code> и <code>approved_reg</code> для заголовка и статуса утверждения.</p>
-<pre><code>class Registration(models.Model):
-    author = models.ForeignKey('Author', on_delete=models.CASCADE)
-    conference = models.ForeignKey('Conference', on_delete=models.CASCADE)
-    title = models.CharField(max_length=200, default='')
-    approved_reg = models.BooleanField(default=False)
+<p>Здесь можно увидеть выполнение запроса в консоли.
+<img alt="" src="../3.3.3.png" /></p>
+<h3 id="334">Задание 3.3.4</h3>
+<p>В четвертом задании третьей практической работы нужно подсчитать количества машин каждой марки.
+Вот код запроса:</p>
+<pre><code>from project_first_app.models import Car
+from django.db.models import Count
+
+# Получение информации о количестве машин для каждой марки
+cars_by_brand_count = Car.objects.values('brand').annotate(car_count=Count('id'))
+
+# Вывод информации
+for car_info in cars_by_brand_count:
+    print(f&quot;Brand: {car_info['brand']}, Car Count: {car_info['car_count']}&quot;)
 </code></pre>
-<p>Эта часть кода определяет модель <code>Presentation</code> с внешними ключами на модели <code>Conference</code> и <code>Author</code>. Есть поля <code>title</code> и <code>approved_pres</code> для заголовка и статуса утверждения.</p>
-<pre><code>class Presentation(models.Model):
-    conference = models.ForeignKey('Conference', on_delete=models.CASCADE)
-    author = models.ForeignKey('Author', on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
-    approved_pres = models.BooleanField(default=False)
+<p>Здесь можно увидеть выполнение запроса в консоли.
+<img alt="" src="../3.3.4.png" /></p>
+<h3 id="335">Задание 3.3.5</h3>
+<p>В пятом задании третьей практической работы нужно вывести информацию о владельцах, отсортированных по самой ранней дате выдачи удостоверения..
+Вот код запроса:</p>
+<pre><code>from project_first_app.models import Driver, DriverDocs
+
+# Получение всех владельцев, отсортированных по дате выдачи удостоверения
+owners_sorted_by_docs_date = DriverDocs.objects.values('driver_id').order_by('date_from').distinct()
+
+# Вывод информации
+for owner_info in owners_sorted_by_docs_date:
+    driver_id = owner_info['driver_id']
+    driver = Driver.objects.get(id=driver_id)
+
+    # Получение самой ранней даты выдачи удостоверения для данного владельца
+    earliest_docs_date = DriverDocs.objects.filter(driver_id=driver_id).order_by('date_from').first().date_from
+
+    print(f&quot;Driver: {driver.first_name} {driver.last_name}, Docs Date From: {earliest_docs_date}&quot;)
 </code></pre>
-<p>Здесь определена модель <code>Review</code> с внешними ключами на модели <code>Conference</code> и <code>Author</code>. Есть также поля <code>comment_date</code>, <code>text</code> и <code>rating</code> для даты комментария, текста комментария и рейтинга (с валидацией от 1 до 10).</p>
-<pre><code>class Review(models.Model):
-    conference = models.ForeignKey('Conference', on_delete=models.CASCADE)
-    author = models.ForeignKey('Author', on_delete=models.CASCADE)
-    comment_date = models.DateTimeField(auto_now_add=True)
-    text = models.TextField()
-    rating = models.IntegerField(
-        validators=[MinValueValidator(1), MaxValueValidator(10)]
-    )
-</code></pre></p>
+<p>Здесь можно увидеть выполнение запроса в консоли.
+<img alt="" src="../3.3.5.png" /></p></p>
     </article>
 </section>
             <!-- endblock -->
