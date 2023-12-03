@@ -126,7 +126,7 @@ class MyHTTPServer:
         )
 if __name__ == '__main__':
     host = 'localhost'
-    port = 7700
+    port = 9990
     serv = MyHTTPServer(host, port)
     try:
         serv.run()
