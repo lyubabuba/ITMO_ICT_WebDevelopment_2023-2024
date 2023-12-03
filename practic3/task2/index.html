@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-        <title>settings - lyuba's web</title>
+        <title>task2 - lyuba's web</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -124,7 +124,7 @@
             </li>
             <li class="drac-box">
                 <a href="../.."
-                    class=" active 
+                    class="
                     drac-anchor btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
                     data-bs-toggle="collapse" data-bs-target="#lab-2-collapse" aria-expanded="false">
                     lab 2
@@ -133,7 +133,7 @@
                     <ul class="mb-5 drac-list drac-list-none">
                             
     <li class="drac-box-ternary">
-        <a href="../admin/"
+        <a href="../../lab2/admin/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             admin
@@ -141,7 +141,7 @@
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="../forms/"
+        <a href="../../lab2/forms/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             forms
@@ -149,7 +149,7 @@
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="../model/"
+        <a href="../../lab2/model/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             models
@@ -157,15 +157,15 @@
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="./"
-            class=" active 
+        <a href="../../lab2/settings/"
+            class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             settings
         </a>
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="../templates/"
+        <a href="../../lab2/templates/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             templates
@@ -173,7 +173,7 @@
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="../urls/"
+        <a href="../../lab2/urls/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             urls
@@ -181,7 +181,7 @@
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="../views/"
+        <a href="../../lab2/views/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             views
@@ -260,7 +260,7 @@
             </li>
             <li class="drac-box">
                 <a href="../.."
-                    class="
+                    class=" active 
                     drac-anchor btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
                     data-bs-toggle="collapse" data-bs-target="#practice-3-collapse" aria-expanded="false">
                     practice 3
@@ -269,7 +269,7 @@
                     <ul class="mb-5 drac-list drac-list-none">
                             
     <li class="drac-box-ternary">
-        <a href="../../practic3/task1/"
+        <a href="../task1/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             task1
@@ -277,15 +277,15 @@
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="../../practic3/task2/"
-            class="
+        <a href="./"
+            class=" active 
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             task2
         </a>
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="../../practic3/task3/"
+        <a href="../task3/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             task3
@@ -322,13 +322,13 @@
         <div class="container">
             <div class="row row-preview">
                 <div class="col">
-                    <a href="../model/"
+                    <a href="../task1/"
                         class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </div>
                 <div class="col">
-                    <a href="../templates/"
+                    <a href="../task3/"
                         class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover" style="padding-left: 3%;">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
@@ -365,23 +365,96 @@
             <!-- block content -->
                 <section class="p-md-5 section-content">
     <article>
-        <p><h3 id="settingspy">settings.py</h3>
-<p>Файл <code>settings.py</code>- это настройки приложения, и они были в основном автоматически написаны при создании проекта.
-Однако позднее вручную потребовалось внести некоторые изменения:</p>
-<p>Во-первых, я указываю собственную модель пользователя, которую ранее определила в приложении conferences_app.</p>
-<pre><code>AUTH_USER_MODEL = 'conferences_app.Author'
+        <p><h2 id="32">Практика 3.2</h2>
+<h3 id="321">Задание 3.2.1</h3>
+<p>В первом задании второй практической работы нужно вывести все машины опредленной марки.
+Вот код запроса:</p>
+<pre><code>from project_first_app.models import Car
+
+# Получение всех объектов Car с брендом &quot;Brand4&quot;
+brand4_cars = Car.objects.filter(brand=&quot;Brand4&quot;)
+
+# Вывод всех машин бренда &quot;Brand4&quot;
+for car in brand4_cars:
+    print(car)
+
 </code></pre>
-<p>Во вторых, определяю установленные приложения в проекте.</p>
-<pre><code>INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'conferences_app'
-]
-</code></pre></p>
+<p>Здесь можно увидеть выполнение запроса в консоли.
+<img alt="" src="../3.2.1.png" /></p>
+<h3 id="322">Задание 3.2.2</h3>
+<p>Во втором задании второй практической работы нужно вывести всех водителей с определенным именем.
+Вот код запроса:</p>
+<pre><code>from project_first_app.models import Driver
+
+# Получение водителя с именем &quot;Driver4&quot;
+driver4 = Driver.objects.get(first_name=&quot;Driver4&quot;)
+
+# Вывод информации о водителе
+print(driver4)
+</code></pre>
+<p>Здесь можно увидеть выполнение запроса в консоли.
+<img alt="" src="../3.2.2.png" /></p>
+<h3 id="323">Задание 3.2.3</h3>
+<p>В третьем задании второй практической работы нужно, чтобы взяв любого случайного владельца, можно было получить его id, и по этому id затем получить экземпляр удостоверения в виде объекта модели.
+Вот код запроса:</p>
+<pre><code>import random
+from project_first_app.models import Driver, DriverDocs
+
+# Получение случайного водителя
+random_driver = random.choice(Driver.objects.all())
+
+# Получение нужных документов в зависимости от id выпавшего водителя
+driver_docs = DriverDocs.objects.get(driver_id=random_driver.id)
+
+# Вывод информации по водителю и его удостоверению
+print(f&quot;Driver name: {random_driver.first_name}&quot;, f&quot;\nDriver Docs Info: {driver_docs.docs_number}, {driver_docs.driver_id}&quot;)
+</code></pre>
+<p>Здесь можно увидеть выполнение запроса в консоли.
+<img alt="" src="../3.2.3.png" /></p>
+<h3 id="324">Задание 3.2.4</h3>
+<p>В четвертом задании второй практической работы нужно было вывести информацию о всех владельцах, чей год владения машиной начинается с определенной даты. Я написала два запроса: для <em>сегодняшней даты</em> и даты, которая <em>начинается с "2022"</em>
+Вот код запроса:</p>
+<pre><code>import random
+from project_first_app.models import Ownership
+
+# Получение всех владельцев машин цвета &quot;Color4&quot;
+owners_with_color4 = Ownership.objects.filter(car_id__color=&quot;Color4&quot;)
+
+# Вывод информации о владельцах
+for ownership in owners_with_color4:
+    print(f&quot;Driver: {ownership.driver_id}, Car Color: {ownership.car_id.color}&quot;)
+</code></pre>
+<p>Здесь можно увидеть выполнение запроса в консоли.
+<img alt="" src="../3.2.4.png" /></p>
+<h3 id="325">Задание 3.2.5</h3>
+<p>В пятом задании второй практической работы нужно было вывести информациб о владельцах машины определенного цвета.
+Вот код первого запроса:</p>
+<pre><code>from project_first_app.models import Ownership
+from django.utils import timezone
+
+# Получение сегодняшней даты
+current_date = timezone.now().date()
+
+# Получение всех владельцев с годом владения, начинающимся с текущей даты
+owners_with_current_year = Ownership.objects.filter(date_from__year=current_date.year)
+
+# Вывод информации о владельцах
+for ownership in owners_with_current_year:
+    print(f&quot;Driver: {ownership.driver_id}, Car: {ownership.car_id}, Start Date: {ownership.date_from}&quot;)
+</code></pre>
+<p>А вот код первого запроса:</p>
+<pre><code>from project_first_app.models import Ownership
+
+# Получение всех владельцев с годом владения, начинающимся с 2022 года
+owners_with_2022_year = Ownership.objects.filter(date_from__year=2022)
+
+# Вывод информации о владельцах
+for ownership in owners_with_2022_year:
+    print(f&quot;Driver: {ownership.driver_id}, Car: {ownership.car_id}, Start Date: {ownership.date_from}&quot;)
+</code></pre>
+<p>Здесь можно увидеть выполнение запроса в консоли.
+<img alt="" src="../3.2.5%3Aone.png" />
+<img alt="" src="../3.2.5%3Atwo.png" /></p></p>
     </article>
 </section>
             <!-- endblock -->
