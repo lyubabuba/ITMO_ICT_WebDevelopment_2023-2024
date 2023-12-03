@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-        <title>Task1 - lyuba's web</title>
+        <title>task2 - lyuba's web</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -260,7 +260,7 @@
             </li>
             <li class="drac-box">
                 <a href="../.."
-                    class="
+                    class=" active 
                     drac-anchor btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
                     data-bs-toggle="collapse" data-bs-target="#practice-3-collapse" aria-expanded="false">
                     practice 3
@@ -269,7 +269,7 @@
                     <ul class="mb-5 drac-list drac-list-none">
                             
     <li class="drac-box-ternary">
-        <a href="../../lab3/task1.md"
+        <a href="../task1/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             task1
@@ -277,15 +277,15 @@
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="../../lab3/task2.md"
-            class="
+        <a href="./"
+            class=" active 
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             task2
         </a>
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="../../lab3/task3.md"
+        <a href="../task3/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             task3
@@ -319,6 +319,22 @@
                     <!-- block preview -->
                     <li class="nav-item">
                             
+        <div class="container">
+            <div class="row row-preview">
+                <div class="col">
+                    <a href="../task1/"
+                        class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="../task3/"
+                        class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover" style="padding-left: 3%;">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
                     </li>
                     <!--  endblock -->
 
@@ -349,66 +365,96 @@
             <!-- block content -->
                 <section class="p-md-5 section-content">
     <article>
-        <p><h2 id="31">Практика 3.1</h2>
-<h3 id="311">Задание 3.1.1</h3>
-<p>В первом задании первой практической работы нужно было написать запрос на создание 6 новых автовладельцев и 6 автомобилей, а также назначить каждому автовладельцу удостоверение и от 1 до 3 автомобилей. </p>
-<p>Задание было выполнено либо в отдельном <code>python</code>-файле. Вот его код:</p>
-<pre><code>from project_first_app.models import Driver, Car, DriverDocs, Ownership
+        <p><h2 id="32">Практика 3.2</h2>
+<h3 id="321">Задание 3.2.1</h3>
+<p>В первом задании второй практической работы нужно вывести все машины опредленной марки.
+Вот код запроса:</p>
+<pre><code>from project_first_app.models import Car
+
+# Получение всех объектов Car с брендом &quot;Brand4&quot;
+brand4_cars = Car.objects.filter(brand=&quot;Brand4&quot;)
+
+# Вывод всех машин бренда &quot;Brand4&quot;
+for car in brand4_cars:
+    print(car)
+
+</code></pre>
+<p>Здесь можно увидеть выполнение запроса в консоли.
+<img alt="" src="../3.2.1.png" /></p>
+<h3 id="322">Задание 3.2.2</h3>
+<p>Во втором задании второй практической работы нужно вывести всех водителей с определенным именем.
+Вот код запроса:</p>
+<pre><code>from project_first_app.models import Driver
+
+# Получение водителя с именем &quot;Driver4&quot;
+driver4 = Driver.objects.get(first_name=&quot;Driver4&quot;)
+
+# Вывод информации о водителе
+print(driver4)
+</code></pre>
+<p>Здесь можно увидеть выполнение запроса в консоли.
+<img alt="" src="../3.2.2.png" /></p>
+<h3 id="323">Задание 3.2.3</h3>
+<p>В третьем задании второй практической работы нужно, чтобы взяв любого случайного владельца, можно было получить его id, и по этому id затем получить экземпляр удостоверения в виде объекта модели.
+Вот код запроса:</p>
+<pre><code>import random
+from project_first_app.models import Driver, DriverDocs
+
+# Получение случайного водителя
+random_driver = random.choice(Driver.objects.all())
+
+# Получение нужных документов в зависимости от id выпавшего водителя
+driver_docs = DriverDocs.objects.get(driver_id=random_driver.id)
+
+# Вывод информации по водителю и его удостоверению
+print(f&quot;Driver name: {random_driver.first_name}&quot;, f&quot;\nDriver Docs Info: {driver_docs.docs_number}, {driver_docs.driver_id}&quot;)
+</code></pre>
+<p>Здесь можно увидеть выполнение запроса в консоли.
+<img alt="" src="../3.2.3.png" /></p>
+<h3 id="324">Задание 3.2.4</h3>
+<p>В четвертом задании второй практической работы нужно было вывести информацию о всех владельцах, чей год владения машиной начинается с определенной даты. Я написала два запроса: для <em>сегодняшней даты</em> и даты, которая <em>начинается с "2022"</em>
+Вот код запроса:</p>
+<pre><code>import random
+from project_first_app.models import Ownership
+
+# Получение всех владельцев машин цвета &quot;Color4&quot;
+owners_with_color4 = Ownership.objects.filter(car_id__color=&quot;Color4&quot;)
+
+# Вывод информации о владельцах
+for ownership in owners_with_color4:
+    print(f&quot;Driver: {ownership.driver_id}, Car Color: {ownership.car_id.color}&quot;)
+</code></pre>
+<p>Здесь можно увидеть выполнение запроса в консоли.
+<img alt="" src="../3.2.4.png" /></p>
+<h3 id="325">Задание 3.2.5</h3>
+<p>В пятом задании второй практической работы нужно было вывести информациб о владельцах машины определенного цвета.
+Вот код первого запроса:</p>
+<pre><code>from project_first_app.models import Ownership
 from django.utils import timezone
 
-# Создание 6 новых водителей, начиная с 4
-for i in range(4, 10):
-    driver = Driver.objects.create(
-        username=f&quot;Driver{i}&quot;,
-        first_name=f&quot;Driver{i}&quot;,
-        last_name=f&quot;Lastname{i}&quot;,
-        birth_date=timezone.now().date(),
-        passport=f&quot;Passport{i}&quot;,
-        address=f&quot;Address{i}&quot;,
-        nationality=f&quot;Nationality{i}&quot;
-    )
+# Получение сегодняшней даты
+current_date = timezone.now().date()
 
-    # Установка пароля и почты
-    password = f&quot;12345Qwerty&quot;
-    driver.set_password(password)
-    driver.email = f&quot;driver{i}@example.com&quot;
+# Получение всех владельцев с годом владения, начинающимся с текущей даты
+owners_with_current_year = Ownership.objects.filter(date_from__year=current_date.year)
 
-    # Сохранение изменений
-    driver.save()
-
-# Создание 6 новых автомобилей
-for i in range(2, 8):
-    car = Car.objects.create(
-        car_number=f&quot;Car{i}&quot;,
-        brand=f&quot;Brand{i}&quot;,
-        model=f&quot;Model{i}&quot;,
-        color=f&quot;Color{i}&quot;
-    )
-
-# Назначение удостоверения для каждого водителя
-for driver in Driver.objects.all():
-    DriverDocs.objects.create(
-        driver_id=driver,
-        docs_number=f&quot;DocsNumber{driver.id}&quot;,
-        type=f&quot;Type{driver.id}&quot;,
-        date_from=timezone.now().date()
-    )
-
-# Добавление связей Ownership между водителями и автомобилями
-for i, (driver, car) in enumerate(zip(Driver.objects.all(), Car.objects.all())):
-    Ownership.objects.create(
-        driver_id=driver,
-        car_id=car,
-        date_from=timezone.now().date(),
-        date_to=None
-    )
+# Вывод информации о владельцах
+for ownership in owners_with_current_year:
+    print(f&quot;Driver: {ownership.driver_id}, Car: {ownership.car_id}, Start Date: {ownership.date_from}&quot;)
 </code></pre>
-<p>Здесь можно увидеть выполнение запроса в консоли. 
-Сначала состояние БД до выполнения запроса:
-<img alt="" src="../3.1.1_before.png" /></p>
-<p>А здесь БД после вызова скрипта:
-<img alt="" src="../3.1.1_after.png" />
-<img alt="" src="../3.1.1_after2.png" /></p></p>
+<p>А вот код первого запроса:</p>
+<pre><code>from project_first_app.models import Ownership
+
+# Получение всех владельцев с годом владения, начинающимся с 2022 года
+owners_with_2022_year = Ownership.objects.filter(date_from__year=2022)
+
+# Вывод информации о владельцах
+for ownership in owners_with_2022_year:
+    print(f&quot;Driver: {ownership.driver_id}, Car: {ownership.car_id}, Start Date: {ownership.date_from}&quot;)
+</code></pre>
+<p>Здесь можно увидеть выполнение запроса в консоли.
+<img alt="" src="../3.2.5%3Aone.png" />
+<img alt="" src="../3.2.5%3Atwo.png" /></p></p>
     </article>
 </section>
             <!-- endblock -->
