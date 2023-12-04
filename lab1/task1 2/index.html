@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-        <title>task1 - lyuba's web</title>
+        <title>task 1 - lyuba's web</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -81,7 +81,7 @@
                     <ul class="mb-5 drac-list drac-list-none">
                             
     <li class="drac-box-ternary">
-        <a href="../../lab1/task1/"
+        <a href="../task1/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             task 1
@@ -89,7 +89,7 @@
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="../../lab1/task2/"
+        <a href="../task2/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             task 2
@@ -97,7 +97,7 @@
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="../../lab1/task3/"
+        <a href="../task3/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             task 3
@@ -105,7 +105,7 @@
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="../../lab1/task4/"
+        <a href="../task4/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             task 4
@@ -113,7 +113,7 @@
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="../../lab1/task5/"
+        <a href="../task5/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             task 5
@@ -260,7 +260,7 @@
             </li>
             <li class="drac-box">
                 <a href="../.."
-                    class=" active 
+                    class="
                     drac-anchor btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
                     data-bs-toggle="collapse" data-bs-target="#practice-3-collapse" aria-expanded="false">
                     practice 3
@@ -269,15 +269,15 @@
                     <ul class="mb-5 drac-list drac-list-none">
                             
     <li class="drac-box-ternary">
-        <a href="./"
-            class=" active 
+        <a href="../../practic3/task1/"
+            class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             task1
         </a>
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="../task2/"
+        <a href="../../practic3/task2/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             task2
@@ -285,7 +285,7 @@
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="../task3/"
+        <a href="../../practic3/task3/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             task3
@@ -319,22 +319,6 @@
                     <!-- block preview -->
                     <li class="nav-item">
                             
-        <div class="container">
-            <div class="row row-preview">
-                <div class="col">
-                    <a href="../../lab3/views/"
-                        class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover">
-                        <i class="fa fa-arrow-left"></i> Previous
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="../task2/"
-                        class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover" style="padding-left: 3%;">
-                        Next <i class="fa fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
                     </li>
                     <!--  endblock -->
 
@@ -365,66 +349,58 @@
             <!-- block content -->
                 <section class="p-md-5 section-content">
     <article>
-        <p><h2 id="31">Практика 3.1</h2>
-<h3 id="311">Задание 3.1.1</h3>
-<p>В первом задании первой практической работы нужно было написать запрос на создание 6 новых автовладельцев и 6 автомобилей, а также назначить каждому автовладельцу удостоверение и от 1 до 3 автомобилей. </p>
-<p>Задание было выполнено в отдельном <code>python</code>-файле. Вот его код:</p>
-<pre><code>from project_first_app.models import Driver, Car, DriverDocs, Ownership
-from django.utils import timezone
+        <p><h1 id="task-1">task 1</h1>
+<h3 id="serverpy">server.py</h3>
+<pre><code># Импортируем модуль socket для работы с сокетами
+import socket
 
-# Создание 6 новых водителей, начиная с 4
-for i in range(4, 10):
-    driver = Driver.objects.create(
-        username=f&quot;Driver{i}&quot;,
-        first_name=f&quot;Driver{i}&quot;,
-        last_name=f&quot;Lastname{i}&quot;,
-        birth_date=timezone.now().date(),
-        passport=f&quot;Passport{i}&quot;,
-        address=f&quot;Address{i}&quot;,
-        nationality=f&quot;Nationality{i}&quot;
-    )
+# Создаем сокет, используя IPv4 и UDP
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-    # Установка пароля и почты
-    password = f&quot;12345Qwerty&quot;
-    driver.set_password(password)
-    driver.email = f&quot;driver{i}@example.com&quot;
+# Привязываем сокет к локальному адресу и порту
+sock.bind(('localhost', 8080))
 
-    # Сохранение изменений
-    driver.save()
+# Принимаем данные от клиента и адрес клиента
+data, addr = sock.recvfrom(1024)
 
-# Создание 6 новых автомобилей
-for i in range(2, 8):
-    car = Car.objects.create(
-        car_number=f&quot;Car{i}&quot;,
-        brand=f&quot;Brand{i}&quot;,
-        model=f&quot;Model{i}&quot;,
-        color=f&quot;Color{i}&quot;
-    )
+# Декодируем полученные данные из байтовой строки в строку UTF-8
+decoded_data = data.decode("utf-8")
 
-# Назначение удостоверения для каждого водителя
-for driver in Driver.objects.all():
-    DriverDocs.objects.create(
-        driver_id=driver,
-        docs_number=f&quot;DocsNumber{driver.id}&quot;,
-        type=f&quot;Type{driver.id}&quot;,
-        date_from=timezone.now().date()
-    )
+# Выводим полученное сообщение на экран
+print("Recieved message:", decoded_data)
 
-# Добавление связей Ownership между водителями и автомобилями
-for i, (driver, car) in enumerate(zip(Driver.objects.all(), Car.objects.all())):
-    Ownership.objects.create(
-        driver_id=driver,
-        car_id=car,
-        date_from=timezone.now().date(),
-        date_to=None
-    )
+# Отправляем ответное сообщение клиенту
+sock.sendto(b"Hello, client!", addr)
+
+# Закрываем сокет
+sock.close()
 </code></pre>
-<p>Здесь можно увидеть выполнение запроса в консоли. 
-Сначала состояние БД до выполнения запроса:
-<img alt="" src="../3.1.1_before.png" /></p>
-<p>А здесь БД после вызова скрипта:
-<img alt="" src="../3.1.1_after.png" />
-<img alt="" src="../3.1.1_after2.png" /></p></p>
+<h3 id="clientpy">client.py</h3>
+<pre><code># Импортируем модуль socket для работы с сокетами
+import socket
+
+# Создаем сокет, используя IPv4 и UDP
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+# Устанавливаем соединение с сервером
+sock.connect(('localhost', 8080))
+
+# Отправляем сообщение серверу ("Hello, server!") через сокет
+sock.send(b"Hello, server!")
+
+# Получаем данные от сервера
+data = sock.recv(1024)
+
+# Декодируем полученные данные из байтовой строки в строку UTF-8
+decoded_data = data.decode("utf-8")
+
+# Выводим полученное сообщение на экран
+print("Recieved message:", decoded_data)
+
+# Закрываем сокет
+sock.close()
+</code></pre>
+<p><img alt="" src="../task1.png" /></p></p>
     </article>
 </section>
             <!-- endblock -->

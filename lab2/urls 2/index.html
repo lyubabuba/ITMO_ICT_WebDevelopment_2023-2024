@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-        <title>task1 - lyuba's web</title>
+        <title>urls.py - lyuba's web</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -133,7 +133,7 @@
                     <ul class="mb-5 drac-list drac-list-none">
                             
     <li class="drac-box-ternary">
-        <a href="../../lab2/admin/"
+        <a href="../admin/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             admin
@@ -141,7 +141,7 @@
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="../../lab2/forms/"
+        <a href="../forms/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             forms
@@ -149,7 +149,7 @@
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="../../lab2/model/"
+        <a href="../model/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             models
@@ -157,7 +157,7 @@
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="../../lab2/settings/"
+        <a href="../settings/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             settings
@@ -165,7 +165,7 @@
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="../../lab2/templates/"
+        <a href="../templates/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             templates
@@ -173,7 +173,7 @@
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="../../lab2/urls/"
+        <a href="../urls/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             urls
@@ -181,7 +181,7 @@
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="../../lab2/views/"
+        <a href="../views/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             views
@@ -260,7 +260,7 @@
             </li>
             <li class="drac-box">
                 <a href="../.."
-                    class=" active 
+                    class="
                     drac-anchor btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
                     data-bs-toggle="collapse" data-bs-target="#practice-3-collapse" aria-expanded="false">
                     practice 3
@@ -269,15 +269,15 @@
                     <ul class="mb-5 drac-list drac-list-none">
                             
     <li class="drac-box-ternary">
-        <a href="./"
-            class=" active 
+        <a href="../../practic3/task1/"
+            class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             task1
         </a>
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="../task2/"
+        <a href="../../practic3/task2/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             task2
@@ -285,7 +285,7 @@
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="../task3/"
+        <a href="../../practic3/task3/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             task3
@@ -319,22 +319,6 @@
                     <!-- block preview -->
                     <li class="nav-item">
                             
-        <div class="container">
-            <div class="row row-preview">
-                <div class="col">
-                    <a href="../../lab3/views/"
-                        class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover">
-                        <i class="fa fa-arrow-left"></i> Previous
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="../task2/"
-                        class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover" style="padding-left: 3%;">
-                        Next <i class="fa fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
                     </li>
                     <!--  endblock -->
 
@@ -365,66 +349,93 @@
             <!-- block content -->
                 <section class="p-md-5 section-content">
     <article>
-        <p><h2 id="31">Практика 3.1</h2>
-<h3 id="311">Задание 3.1.1</h3>
-<p>В первом задании первой практической работы нужно было написать запрос на создание 6 новых автовладельцев и 6 автомобилей, а также назначить каждому автовладельцу удостоверение и от 1 до 3 автомобилей. </p>
-<p>Задание было выполнено в отдельном <code>python</code>-файле. Вот его код:</p>
-<pre><code>from project_first_app.models import Driver, Car, DriverDocs, Ownership
-from django.utils import timezone
-
-# Создание 6 новых водителей, начиная с 4
-for i in range(4, 10):
-    driver = Driver.objects.create(
-        username=f&quot;Driver{i}&quot;,
-        first_name=f&quot;Driver{i}&quot;,
-        last_name=f&quot;Lastname{i}&quot;,
-        birth_date=timezone.now().date(),
-        passport=f&quot;Passport{i}&quot;,
-        address=f&quot;Address{i}&quot;,
-        nationality=f&quot;Nationality{i}&quot;
-    )
-
-    # Установка пароля и почты
-    password = f&quot;12345Qwerty&quot;
-    driver.set_password(password)
-    driver.email = f&quot;driver{i}@example.com&quot;
-
-    # Сохранение изменений
-    driver.save()
-
-# Создание 6 новых автомобилей
-for i in range(2, 8):
-    car = Car.objects.create(
-        car_number=f&quot;Car{i}&quot;,
-        brand=f&quot;Brand{i}&quot;,
-        model=f&quot;Model{i}&quot;,
-        color=f&quot;Color{i}&quot;
-    )
-
-# Назначение удостоверения для каждого водителя
-for driver in Driver.objects.all():
-    DriverDocs.objects.create(
-        driver_id=driver,
-        docs_number=f&quot;DocsNumber{driver.id}&quot;,
-        type=f&quot;Type{driver.id}&quot;,
-        date_from=timezone.now().date()
-    )
-
-# Добавление связей Ownership между водителями и автомобилями
-for i, (driver, car) in enumerate(zip(Driver.objects.all(), Car.objects.all())):
-    Ownership.objects.create(
-        driver_id=driver,
-        car_id=car,
-        date_from=timezone.now().date(),
-        date_to=None
-    )
+        <p><h1 id="urlspy">urls.py</h1>
+<p>Файл <code>urls.py</code> в Django используется для определения маршрутов (URL-путей) в вашем веб-приложении. Он связывает URL-пути с функциями (или классами) представлений, которые обрабатывают запросы пользователя.</p>
+<p>В началя я импортирую модули для создания путей, а также представления из файла <code>views.py</code>.</p>
+<pre><code>from django.urls import path
+from . import views
+from .views import (
+    home,
+    AuthorCreateView,
+    AuthorUpdateView,
+    RegistrationCreateView,
+    RegistrationUpdateView,
+    RegistrationDeleteView,
+    PresentationCreateView,
+    PresentationUpdateView,
+    ReviewCreateView,
+    ReviewUpdateView,
+    conference_authors,
+    all_authors,
+)
 </code></pre>
-<p>Здесь можно увидеть выполнение запроса в консоли. 
-Сначала состояние БД до выполнения запроса:
-<img alt="" src="../3.1.1_before.png" /></p>
-<p>А здесь БД после вызова скрипта:
-<img alt="" src="../3.1.1_after.png" />
-<img alt="" src="../3.1.1_after2.png" /></p></p>
+<p>Далее я прописываю пути к каждой странице: для этого я указываю путь, используемый класс или функцию из представления, а также даю имя для обращения к файлу.</p>
+<pre><code>urlpatterns = [
+
+    # Главная страница
+    path('', home, name='home'),
+
+    # Страница со всеми авторами
+    path('authors/', all_authors, name='all_authors'),
+
+    # Добавление нового автора
+    path('authors/add/', AuthorCreateView.as_view(), name='add_author'),
+
+    # Редактирование существующего автора по его идентификатору
+    path('author/&lt;int:pk&gt;/edit', AuthorUpdateView.as_view(), name='edit_author'),
+
+    # Детали конкретного автора по его идентификатору
+    path('author/&lt;int:author_id&gt;/', views.author_detail, name='author_detail'),
+
+    # Страница со всеми регистрациями
+    path('registrations/', views.all_registrations, name='all_registrations'),
+
+    # Добавление новой регистрации
+    path('registrations/add/', RegistrationCreateView.as_view(), name='add_registration'),
+
+    # Редактирование существующей регистрации по ее идентификатору
+    path('registration/&lt;int:pk&gt;/edit', RegistrationUpdateView.as_view(), name='edit_registration'),
+
+    # Детали конкретной регистрации по ее идентификатору
+    path('registration/&lt;int:registration_id&gt;/', views.registration_detail, name='registration_detail'),
+
+    # Удаление существующей регистрации по ее идентификатору
+    path('registration/&lt;int:pk&gt;/delete', RegistrationDeleteView.as_view(), name='delete_registration'),
+
+    # Страница со всеми отзывами
+    path('reviews/', views.all_reviews, name='all_reviews'),
+
+    # Добавление нового отзыва
+    path('reviews/add/', ReviewCreateView.as_view(), name='add_review'),
+
+    # Редактирование существующего отзыва по его идентификатору
+    path('review/&lt;int:pk&gt;/edit', ReviewUpdateView.as_view(), name='edit_review'),
+
+    # Детали конкретного отзыва по его идентификатору
+    path('review/&lt;int:review_id&gt;/', views.review_detail, name='review_detail'),
+
+    # Страница со всеми презентациями
+    path('presentations/', views.all_presentations, name='all_presentations'),
+
+    # Добавление новой презентации
+    path('presentations/add/', PresentationCreateView.as_view(), name='add_presentation'),
+
+    # Редактирование существующей презентации по ее идентификатору
+    path('presentation/&lt;int:pk&gt;/edit', PresentationUpdateView.as_view(), name='edit_presentation'),
+
+    # Детали конкретной презентации по ее идентификатору
+    path('presentation/&lt;int:presentation_id&gt;/', views.presentation_detail, name='presentation_detail'),
+
+    # Страница со всеми конференциями
+    path('conferences/', views.all_conferences, name='all_conferences'),
+
+    # Детали конкретной конференции по ее идентификатору
+    path('conference/&lt;int:conference_id&gt;/', views.conference_detail, name='conference_detail'),
+
+    # Страница с авторами, зарегистрированными на конференции по ее идентификатору
+    path('conference/&lt;int:conference_id&gt;/authors/', conference_authors, name='conference_authors'),
+]
+</code></pre></p>
     </article>
 </section>
             <!-- endblock -->

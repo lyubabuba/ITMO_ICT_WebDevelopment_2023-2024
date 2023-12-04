@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-        <title>Task2 - lyuba's web</title>
+        <title>task 3 - lyuba's web</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -81,7 +81,7 @@
                     <ul class="mb-5 drac-list drac-list-none">
                             
     <li class="drac-box-ternary">
-        <a href="../../lab1/task1/"
+        <a href="../task1/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             task 1
@@ -89,7 +89,7 @@
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="../../lab1/task2/"
+        <a href="../task2/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             task 2
@@ -97,7 +97,7 @@
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="../../lab1/task3/"
+        <a href="../task3/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             task 3
@@ -105,7 +105,7 @@
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="../../lab1/task4/"
+        <a href="../task4/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             task 4
@@ -113,7 +113,7 @@
     </li>
                             
     <li class="drac-box-ternary">
-        <a href="../../lab1/task5/"
+        <a href="../task5/"
             class="
             drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
             task 5
@@ -349,96 +349,77 @@
             <!-- block content -->
                 <section class="p-md-5 section-content">
     <article>
-        <p><h2 id="32">Практика 3.2</h2>
-<h3 id="321">Задание 3.2.1</h3>
-<p>В первом задании второй практической работы нужно вывести все машины опредленной марки.
-Вот код запроса:</p>
-<pre><code>from project_first_app.models import Car
+        <p><h1 id="task-3">task 3</h1>
+<h3 id="serverpy">server.py</h3>
+<pre><code># Импортируем модули socket и webbrowser для работы с сокетами и веб-браузером
+import socket
+import webbrowser
 
-# Получение всех объектов Car с брендом &quot;Brand4&quot;
-brand4_cars = Car.objects.filter(brand=&quot;Brand4&quot;)
+# Создаем сокет TCP
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-# Вывод всех машин бренда &quot;Brand4&quot;
-for car in brand4_cars:
-    print(car)
+# Привязываем сокет к локальному адресу и порту
+sock.bind(('localhost', 8080))
 
+# Ожидаем только одно подключениехотя впрочем зачем я это пишу
+sock.listen(1)
+
+# Открываем и читаем содержимое файла "index.html"
+with open("index.html", "r") as file:
+    html = file.read()
+
+while True:
+    # Принимаем подключение от клиента и получаем информацию о клиенте
+    conn, addr = sock.accept()
+    print(f"Подключено клиентом: {addr}")
+
+    # Создаем HTTP-ответ, включая содержимое HTML-файла
+    response = f"HTTP/1.1 200 OK\nContent-Length: {len(html)}\n\n{html}"
+
+    # Отправляем HTTP-ответ клиенту
+    conn.send(response.encode("utf-8"))
+
+    # Закрываем соединение с клиентом
+    conn.close()
+
+# Открываем веб-браузер и открываем веб-страницу по указанному адресу
+webbrowser.open('http://localhost:8080')
 </code></pre>
-<p>Здесь можно увидеть выполнение запроса в консоли.
-<img alt="" src="../3.2.1.png" /></p>
-<h3 id="322">Задание 3.2.2</h3>
-<p>Во втором задании второй практической работы нужно вывести всех водителей с определенным именем.
-Вот код запроса:</p>
-<pre><code>from project_first_app.models import Driver
+<h3 id="clientpy">client.py</h3>
+<pre><code># Импортируем модуль socket для работы с сокетами
+import socket
 
-# Получение водителя с именем &quot;Driver4&quot;
-driver4 = Driver.objects.get(first_name=&quot;Driver4&quot;)
+# Создаем сокет TCP
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-# Вывод информации о водителе
-print(driver4)
+# Устанавливаем соединение с сервером
+sock.connect(('localhost', 8080))
+
+# Получаем данные от сервера
+data = sock.recv(1024)
+
+# Декодируем полученные данные из байтовой строки в строку UTF-8
+decoded_data = data.decode("utf-8")
+
+# Выводим полученное сообщение
+print("Received message:", decoded_data)
+
+# Закрываем сокет
+sock.close()
 </code></pre>
-<p>Здесь можно увидеть выполнение запроса в консоли.
-<img alt="" src="../3.2.2.png" /></p>
-<h3 id="323">Задание 3.2.3</h3>
-<p>В третьем задании второй практической работы нужно, чтобы взяв любого случайного владельца, можно было получить его id, и по этому id затем получить экземпляр удостоверения в виде объекта модели.
-Вот код запроса:</p>
-<pre><code>import random
-from project_first_app.models import Driver, DriverDocs
-
-# Получение случайного водителя
-random_driver = random.choice(Driver.objects.all())
-
-# Получение нужных документов в зависимости от id выпавшего водителя
-driver_docs = DriverDocs.objects.get(driver_id=random_driver.id)
-
-# Вывод информации по водителю и его удостоверению
-print(f&quot;Driver name: {random_driver.first_name}&quot;, f&quot;\nDriver Docs Info: {driver_docs.docs_number}, {driver_docs.driver_id}&quot;)
+<h3 id="indexhtml">index.html</h3>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;lyubabuba&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;hello&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 </code></pre>
-<p>Здесь можно увидеть выполнение запроса в консоли.
-<img alt="" src="../3.2.3.png" /></p>
-<h3 id="324">Задание 3.2.4</h3>
-<p>В четвертом задании второй практической работы нужно было вывести информацию о всех владельцах, чей год владения машиной начинается с определенной даты. Я написала два запроса: для <em>сегодняшней даты</em> и даты, которая <em>начинается с "2022"</em>
-Вот код запроса:</p>
-<pre><code>import random
-from project_first_app.models import Ownership
-
-# Получение всех владельцев машин цвета &quot;Color4&quot;
-owners_with_color4 = Ownership.objects.filter(car_id__color=&quot;Color4&quot;)
-
-# Вывод информации о владельцах
-for ownership in owners_with_color4:
-    print(f&quot;Driver: {ownership.driver_id}, Car Color: {ownership.car_id.color}&quot;)
-</code></pre>
-<p>Здесь можно увидеть выполнение запроса в консоли.
-<img alt="" src="../3.2.4.png" /></p>
-<h3 id="325">Задание 3.2.5</h3>
-<p>В пятом задании второй практической работы нужно было вывести информациб о владельцах машины определенного цвета.
-Вот код первого запроса:</p>
-<pre><code>from project_first_app.models import Ownership
-from django.utils import timezone
-
-# Получение сегодняшней даты
-current_date = timezone.now().date()
-
-# Получение всех владельцев с годом владения, начинающимся с текущей даты
-owners_with_current_year = Ownership.objects.filter(date_from__year=current_date.year)
-
-# Вывод информации о владельцах
-for ownership in owners_with_current_year:
-    print(f&quot;Driver: {ownership.driver_id}, Car: {ownership.car_id}, Start Date: {ownership.date_from}&quot;)
-</code></pre>
-<p>А вот код первого запроса:</p>
-<pre><code>from project_first_app.models import Ownership
-
-# Получение всех владельцев с годом владения, начинающимся с 2022 года
-owners_with_2022_year = Ownership.objects.filter(date_from__year=2022)
-
-# Вывод информации о владельцах
-for ownership in owners_with_2022_year:
-    print(f&quot;Driver: {ownership.driver_id}, Car: {ownership.car_id}, Start Date: {ownership.date_from}&quot;)
-</code></pre>
-<p>Здесь можно увидеть выполнение запроса в консоли.
-<img alt="" src="../3.2.5%3Aone.png" />
-<img alt="" src="../3.2.5%3Atwo.png" /></p></p>
+<p><img alt="" src="../task3.png" /></p></p>
     </article>
 </section>
             <!-- endblock -->
