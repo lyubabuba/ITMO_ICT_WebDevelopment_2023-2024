@@ -19,6 +19,9 @@
     <router-link :to="{ name: 'NewsPaperOrderList' }">
       <button class="main-button">Перейти к списку заказов</button>
     </router-link>
+    <router-link :to="{ name: 'Auth' }">
+      <button class="main-button">Выйти</button>
+    </router-link>
   </div>
 </template>
 
