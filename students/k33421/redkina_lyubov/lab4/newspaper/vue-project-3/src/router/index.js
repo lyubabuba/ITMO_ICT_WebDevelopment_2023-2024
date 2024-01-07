@@ -29,13 +29,38 @@ import NewsPaperOrderList from "@/components/NewsPaperOrderList.vue";
 import NewsPaperOrderDetails from "@/components/NewsPaperOrderDetails.vue";
 import NewsPaperOrderEdit from "@/components/NewsPaperOrderEdit.vue";
 import NewsPaperOrderCreate from "@/components/NewsPaperOrderCreate.vue";
+
+import Auth from "@/components/Auth.vue";
+import ErrorPage from "@/components/ErrorPage.vue";
+import Registration from "@/components/Registration.vue";
+import UserProfile from "@/components/UserProfile.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '',
+      name: 'Auth',
+      component: Auth
+    },
+    {
+      path: '/mainpage',
       name: 'MainPage',
       component: MainPage
+    },
+    {
+      path: '/error',
+      name: 'ErrorPage',
+      component: ErrorPage
+    },
+    {
+      path: '/registration',
+      name: 'Registration',
+      component: Registration
+    },
+    {
+      path: '/userprofile',
+      name: 'UserProfile',
+      component: UserProfile
     },
     {
       path: '/newspapers',
